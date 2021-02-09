@@ -6,10 +6,12 @@
 |--------------------|---------------------|-------------------------|
 | nickname           | string              | null: false             |
 | email           　 | string              | primary_key             |
-| password           | string              | null: false             |
-| name             　| string              | null: false             |
-| kana       　　　   | string              | null: false             |
-| birthday           | datetime            | null: false             |
+| encrypted_password | string              | null: false             |
+| surname          　| string              | null: false             |
+| name       　　　   | string              | null: false             |
+| surname_kana      　| string              | null: false             |
+| name_kana          | string              | null: false             |
+| birthday           | date                | null: false             |
 
 ### Association
 
@@ -22,11 +24,11 @@
 |------------------------|------------|-------------------|
 | product                | string     | null: false       |
 | description            | text       | null: false       |
-| category               | string　　  | null: false       |
-| condition              | string     | null: false       |
-| charge                 | boolean    | null: false       |
-| area                   | string     | null: false       |
-| shipping               | integer    | null: false       |
+| category_id            | integer　　  | null: false       |
+| condition_id           | integer     | null: false       |
+| charge_id              | integer    | null: false       |
+| area_id                | integer     | null: false       |
+| shipping_id            | integer    | null: false       |
 | price                  | integer    | null: false       |
 | user                   | references | foreign_key: true |
 
@@ -39,8 +41,8 @@
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| item_id     | references | foreign_key: true |
-| user_id     | references | foreign_key: true |
+| item        | references | foreign_key: true |
+| user        | references | foreign_key: true |
 
 ### Association
 
@@ -48,16 +50,16 @@
 - belongs_to :user
 - has_one :address
 
-## address table
+## addresses table
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| zipcode            | integer             | null: false             |
-| prefecture     　　 | string              | null: false             |
+| zip_code           | string              | null: false             |
+| area_id        　　 | integer             | null: false             |
 | municipality       | string              | null: false             |
-| house_number    　　| integer             | null: false             |
-| buildingname       | string              | null: false             |
-| phone              |  integer            | null: false             |
+| house_number    　　| string         　   | null: false             |
+| building_name      | string              | 　　　　　　　             |
+| phone              | string              | null: false             |
 | record             | references          | foreign_key: true       |
 
 ### Association
