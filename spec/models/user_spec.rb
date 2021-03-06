@@ -132,11 +132,15 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Surname can't be blank", "Surname 全角文字を使用してください")
       end
-      it 'nameとsurnameは全角でないと登録できない' do
+      it 'nameは全角でないと登録できない' do
         @user.name = 'ｱｱｱ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name 全角文字を使用してください")
+      end
+      it 'surnameは全角でないと登録できない' do
         @user.surname = 'ｱｱｱ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Surname 全角文字を使用してください", "Name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include("Surname 全角文字を使用してください")
       end
       it 'name_kanaが存在してもsurname_kanaが空では登録できない' do
         @user.name_kana = 'アアア'
@@ -144,11 +148,15 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Surname kana can't be blank", "Surname kana 全角カタカナを使用してください")
       end
-      it 'name_kanaとsurname_kanaは全角カナでないと登録できない' do
+      it 'name_kanaは全角カナでないと登録できない' do
         @user.name_kana = 'あああ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name kana 全角カタカナを使用してください")
+      end
+      it 'surname_kanaは全角カナでないと登録できない' do
         @user.surname_kana = 'あああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Surname kana 全角カタカナを使用してください", "Name kana 全角カタカナを使用してください")
+        expect(@user.errors.full_messages).to include("Surname kana 全角カタカナを使用してください")
       end
       it 'birthdayが空では登録できない' do
         @user.birthday = ''
