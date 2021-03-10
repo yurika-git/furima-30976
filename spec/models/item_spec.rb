@@ -73,10 +73,30 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is not a number")
         end
-        it 'active_hashの値が1であれば保存しない' do
+        it 'カテゴリーの値が1であれば保存しない' do
           @item.category_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include("Category must be other than 1")
+        end
+        it '商品状態の値が1であれば保存しない' do
+          @item.category_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Category must be other than 1")
+        end
+        it '配送負担項目の値が1であれば保存しない' do
+          @item.charge_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Charge must be other than 1")
+        end
+        it '発送元地域の値が1であれば保存しない' do
+          @item.area_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Area must be other than 1")
+        end
+        it '発送日数の値が1であれば保存しない' do
+          @item.shipping_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Shipping must be other than 1")
         end
       end
     end
