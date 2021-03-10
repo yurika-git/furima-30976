@@ -5,11 +5,11 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :product
     validates :description
-    validates :category_id
-    validates :condition_id
-    validates :charge_id
-    validates :area_id 
-    validates :shipping_id 
+    validates :category_id, numericality: { other_than: 1 }
+    validates :condition_id, numericality: { other_than: 1 }
+    validates :charge_id, numericality: { other_than: 1 }
+    validates :area_id, numericality: { other_than: 1 }
+    validates :shipping_id, numericality: { other_than: 1 } 
     validates :image
   end
 
