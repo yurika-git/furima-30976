@@ -31,12 +31,11 @@
 | shipping_id            | integer    | null: false       |
 | price                  | integer    | null: false       |
 | user                   | references | foreign_key: true |
-
 ### Association
 
 - belongs_to :user
 - has_one :record
-
+ 
 ## records table
 
 | Column      | Type       | Options           |
