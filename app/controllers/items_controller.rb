@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_items, only: [:show, :edit, :update]
-  before_action :contributor_confirmation, only: [:edit, :update]
+  before_action :authenticate_user!, expect: [:index, :show]
+  before_action :set_items, expect: [:index, :new, :create]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
 
   def index
@@ -36,6 +36,15 @@ class ItemsController < ApplicationController
      render :edit
     end
   end
+
+  def destroy
+    if @item.destroy
+     redirect_to root_path
+    else
+     render :show
+    end
+  end
+
 
 
   private
