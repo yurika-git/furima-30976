@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, expect: [:index, :show]
-  before_action :set_items, expect: [:index, :new, :create]
+  before_action :set_items, only: [:show, :edit, :update, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
-  
 
   def index
     @items = Item.all.order("created_at DESC")
