@@ -4,13 +4,13 @@ class OrderAddress
   attr_accessor :zip_code, :area_id, :municipality, :house_number, :building_name, :phone, :order, :item, :user
 
 
-with_options presence: true do
- validates :area_id
- validates :municipality
- validates :house_number
- validates :zip_code, format: { with: /\A\d{3}[-]\d{4}\z/} 
- validates :phone, format: { with: /\A\d{11}\z/} do
-end
+ with_options presence: true do
+  validates :area_id
+  validates :municipality
+  validates :house_number
+  validates :zip_code, format: { with: /\A\d{3}[-]\d{4}\z/} 
+  validates :phone, format: { with: /\A\d{11}\z/} 
+ end
 
 
   def save
